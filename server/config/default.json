@@ -4,8 +4,14 @@
     "URL":"http://localhost",
     "DB_URL":"mongodb+srv://admin:aiman%40061@cluster0.8wgwsl3.mongodb.net/booking",
     "TOKEN_KEY": "booking",
-    "MAIL":"aimanfatima@aimanfatima.com",
-    "MAIL_PASSWORD":"aiman@061",
-    "HOST_MAIL":"mail.aimanfatima.com"   
+    "EMAIL_SMTP": {
+        "HOST": "mail.aimanfatima.com",
+        "AUTH": {
+            "USER": "aiman@aimanfatima.com",
+            "PASSWORD": "vEx05[XDmNl-02"
+        },
+        "PORT": 465
+    }
+     
 }
 

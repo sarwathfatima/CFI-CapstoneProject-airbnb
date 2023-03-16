@@ -3,6 +3,7 @@ import placeModel from "../models/Place.js";
 import bookingModel from "../models/Booking.js";
 import imageDownloader from 'image-downloader';
 import upload from "../middlewares/upload.js";
+import sendEmail from "../utils/mail.js";
 const router = express.Router();
 
 // add place
@@ -60,12 +61,11 @@ router.post(
 
       //setting role
       req.body.role = "book";
-
-      
       let place = new bookingModel(req.body);
       let { emailVerifyToken } = await place.save();
       req.body.emailVerifyToken = emailVerifyToken;
       res.status(200).json({success : true,msg : "booked successfully"})
+      sendEmail();
       next();
     } catch (err) {
       console.log(err);
@@ -75,5 +75,9 @@ router.post(
   
 );
 
+router.get('/bookings', async (req,res) => {
+    
+  res.json( await bookingModel.find() );
+});
 
   export default router;
